@@ -1,19 +1,16 @@
-# **Smart Warehouse Management System**
-## **Overview**
-A lightweight, concurrent Spring Boot and Java-based Warehouse Management System (WMS) designed to demonstrate advanced Software Architectures, Database Design, and Multi-threading capabilities in Java. 
+# Festival Management System 
 
-The application provides a REST API integrated with a MySQL database and features an interactive HTML/JS Frontend Dashboard that visualizes warehouse operations and real-time inventory monitoring.
+This is a desktop **Java Swing** application integrated with a **MySQL database** to manage music and cultural festivals and their ticket sales. Built using the **Data Access Object (DAO) pattern**, the system allows administrators to register events, manage tickets, search, update records, and safely delete data
 
-##   Features & Architectural Patterns
+### Features & Architecture
 
-*   **RESTful Web Services:** Exposes clean API endpoints for managing product categories and inventory items.
-*   **Object-Relational Mapping (ORM):** Utilizes Spring Data JPA (Hibernate) for robust database interaction.
-*   **Asynchronous Multi-threading (Java Threads):** Implements a dedicated background thread runner. When item stock falls below the defined critical threshold, a non-blocking background thread (`Thread-1`) is dispatched to handle automated supplier reordering simulation without freezing the main application runtime.
-*   **Single-Page Application (SPA) Frontend:** Responsive HTML5/CSS3/JavaScript dashboard that interacts with the Spring Boot backend via the Fetch API, complete with a simulated "Thread Monitor Console" for real-time log tracking.
+*   **Database & Transactions:** Uses a relational MySQL schema. To maintain data integrity, the system implements manual **JDBC transaction management (`commit`/`rollback`)**. When deleting a festival, it automatically sweeps and deletes all associated tickets first; if any error occurs, the entire operation rolls back.
+*   **User Interface (GUI):** Built using Java Swing (`BorderLayout`, `GridLayout`). The input screen features a dynamic `JList` that lets you add and preview multiple ticket types on the fly before saving the event.
+*   **Complete CRUD:** Supports adding, viewing, searching, modifying, and deleting festival records.
 
-## Tech Stack
+### Technology Stack
 
-*   **Backend:** Java, Spring Boot (Spring Web, Spring Data JPA)
-*   **Database:** MySQL (with HikariCP connection pooling)
-*   **Frontend:** HTML5, CSS3, JavaScript 
-*   **Build Tool:** Maven
+
+*   **Java SE** — Core programming language for application logic and window frame components.
+*   **Java Swing & AWT** — Toolkit used to design the user interfaces, prompt dialogs, and dynamic lists.
+*   **MySQL & JDBC** — Relational database management system coupled with MySQL Connector/J driver to manage connections and execute prepared SQL statements.
